@@ -1,5 +1,33 @@
 {
   "dependencies": {
-    "express": "^4.18.2"
-  }
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.6.1",
+    "sequelize": "^6.33.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Servidor backend",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EzequielBosco/21523A-Ezequiel-Bosco-BLOG.git"
+  },
+  "author": "Ezequiel Bosco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EzequielBosco/21523A-Ezequiel-Bosco-BLOG/issues"
+  },
+  "homepage": "https://github.com/EzequielBosco/21523A-Ezequiel-Bosco-BLOG#readme"
 }
