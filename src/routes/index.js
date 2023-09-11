@@ -1,4 +1,4 @@
-const usersController = require('../controller/users')
+const usersController = require('../controllers/controller.users')
 
 const router = app => {
     app.use('/users', usersController)

@@ -1,15 +1,10 @@
 const http = require('http')
+const app = require('./app')
 
 const port = process.env.port || 4000
 
-http.createServer((req, res) => {
-    if (req.url === '/') {
-        res.writeHead('Bienvenido al servidor')
-        res.end()
-        return
-    }
+const server = http.createServer(app)
 
-    res.write(req.url)
-    res.end()
-
-}).listen(port, console.log(`Server running at port ${port}`))
+server.listen(port, () => {
+    console.log(`Server running at port ${port}`)
+})
