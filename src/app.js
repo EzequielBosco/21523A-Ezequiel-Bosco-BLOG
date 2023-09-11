@@ -2,9 +2,12 @@ const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
 const path = require('path')
+const { sequelize, connectBD } = require('./db')
 require('ejs')
 
 const app = express()
+
+connectBD()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
