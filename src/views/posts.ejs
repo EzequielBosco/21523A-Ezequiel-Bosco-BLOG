@@ -17,6 +17,7 @@
                             <th>Titulo</th>
                             <th>Detalle</th>
                             <th>Fecha</th>
+                            <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,10 +27,13 @@
                                 <td><%= post.titulo %></td>
                                 <td><%= post.detalle %></td>
                                 <td><%= post.fecha_publicacion %></td>
+                                <td><button id="btn-update">Modificar publicación</button></td>
+                                <td><button id="btn-delete">Eliminar publicación</button></td>
                             </tr>
                         <% }) %>
                     </tbody>
                 </table>
+                <button id="btn-create">Crear nueva publicación</button>
             </div>
         </div>
     </div>

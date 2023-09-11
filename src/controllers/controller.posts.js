@@ -14,6 +14,16 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/create', async (req, res) => {
+    try {
+        res.render('form')
+    } catch (error) {
+        return res.status(500).json({
+            msg: "Error to get form"
+        })
+    }
+})
+
 router.post('/create', async (req, res) => {
     const { titulo, detalle, url_imagen, fecha_publicacion } = req.body
 
@@ -21,7 +31,7 @@ router.post('/create', async (req, res) => {
         const newPost = { titulo, detalle, url_imagen, fecha_publicacion }
         await PostSchema.create(newPost)
 
-        res.send({ msg: "Post created successful", newPost })
+        res.send({ msg: 'Post created successfully', newPost })
     } catch (error) {
         console.log(error)
         return res.status(500).json({
@@ -29,6 +39,22 @@ router.post('/create', async (req, res) => {
         })
     }
 })
+
+// router.post('/create', async (req, res) => {
+//     const { titulo, detalle, url_imagen, fecha_publicacion } = req.body
+
+//     try {
+//         const newPost = { titulo, detalle, url_imagen, fecha_publicacion }
+//         await PostSchema.create(newPost)
+
+//         res.send({ msg: "Post created successful", newPost })
+//     } catch (error) {
+//         console.log(error)
+//         return res.status(500).json({
+//             msg: "Error creating post"
+//         })
+//     }
+// })
 
 router.get('/get', async (req, res) => {
     try {
