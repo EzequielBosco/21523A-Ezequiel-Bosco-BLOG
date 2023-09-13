@@ -10,7 +10,7 @@ const users = [
 ]
 
 router.get('/', (req, res) => {
-    res.render('home', { users })
+    res.render('users', { users })
 })
 
 module.exports = router

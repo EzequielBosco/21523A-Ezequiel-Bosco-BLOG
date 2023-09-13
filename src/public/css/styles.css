@@ -1,0 +1,40 @@
+:root {
+    --color: rgb(236, 28, 36)
+}
+
+.btn-black {
+    background-color: black;
+    color: white;
+    transition: 0.2s ease;
+}
+
+.btn-black:hover {
+    background-color: rgb(17, 17, 17);
+    color: white;
+    transform: scale(0.95);
+}
+
+h1 {
+    font-size: 50px;
+}
+
+.color {
+    background-color: var(--color)
+}
+
+.white {
+    color: white;
+}
+
+.black {
+    color: black;
+}
+
+nav h3 {
+    margin: 0;
+    padding: 0
+}
+
+.card-img-top img {
+    width: 300px;
+}

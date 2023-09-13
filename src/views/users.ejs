@@ -14,35 +14,23 @@
                 <table class="table table-stripped">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Titulo</th>
-                            <th>Detalle</th>
-                            <th>Fecha</th>
-                            <th>Opciones</th>
+                            <th>username</th>
+                            <th>name</th>
+                            <th>lastname</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% posts.forEach(function(post) { %>
+                        <% users.forEach(function(user) { %>
                             <tr>
-                                <td><%= post.id %></td>
-                                <td><%= post.titulo %></td>
-                                <td><%= post.detalle %></td>
-                                <td><%= post.fecha_publicacion %></td>
-                                <td><button id="btn-update">Modificar publicación</button></td>
-                                <td><button id="btn-delete">Eliminar publicación</button></td>
+                                <td><%= user.username %></td>
+                                <td><%= user.name %></td>
+                                <td><%= user.lastname %></td>
                             </tr>
                         <% }) %>
                     </tbody>
                 </table>
-                <a href="posts/create" class="btn btn-black">Crear nueva publicación</a>
             </div>
         </div>
-        <section>
-            <div class="container">
-                <button type="button" class="btn btn-black" id="btn-get">Ver publicaciones</button>
-                <div id="div-posts"></div>
-            </div>
-        </section>
     </div>
     <script src="/js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

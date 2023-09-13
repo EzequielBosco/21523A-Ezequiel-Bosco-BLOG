@@ -14,6 +14,18 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/get', async (req, res) => {
+    try {
+        const posts = await PostSchema.findAll()
+        res.json( posts )
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            msg: "Error to get posts"
+        })
+    }
+})
+
 router.get('/create', async (req, res) => {
     try {
         res.render('form')
