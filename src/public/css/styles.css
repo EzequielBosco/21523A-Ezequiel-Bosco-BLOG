@@ -37,4 +37,9 @@ nav h3 {
 
 .card-img-top img {
     width: 300px;
+    border-radius: 5px;
+}
+
+.card-img-top {
+    box-shadow: 2px 1px 6px 2px rgb(124, 124, 124);
 }

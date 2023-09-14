@@ -20,28 +20,15 @@
     </header>
     <main class="color">
         <div class="container">
-            <div class="row">
-                <div class="col">
-                    <table class="table table-stripped">
-                        <thead>
-                            <tr>
-                                <th>username</th>
-                                <th>name</th>
-                                <th>lastname</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% users.forEach(function(user) { %>
-                                <tr>
-                                    <td><%= user.username %></td>
-                                    <td><%= user.name %></td>
-                                    <td><%= user.lastname %></td>
-                                </tr>
-                            <% }) %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <form enctype="application/x-www-form-urlencoded" action="/posts/create" method="post">
+                <label for="titulo"></label>
+                <input type="text" id="titulo" name="titulo" placeholder="Ingresa el título..." required>
+                <label for="detalle"></label>
+                <input type="text" id="detalle" name="detalle" placeholder="Ingresa el detalle..." required>
+                <label for="url_imagen"></label>
+                <input type="url" id="url_imagen" name="url_imagen" placeholder="Ingresa el url de la imagen..." required>
+                <button type="submit" id="btn-create">Crear nueva publicación</button>
+            </form>
         </div>
     </main>
     <footer class="footer bg-light px-3">

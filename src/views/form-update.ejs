@@ -20,28 +20,17 @@
     </header>
     <main class="color">
         <div class="container">
-            <div class="row">
-                <div class="col">
-                    <table class="table table-stripped">
-                        <thead>
-                            <tr>
-                                <th>username</th>
-                                <th>name</th>
-                                <th>lastname</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% users.forEach(function(user) { %>
-                                <tr>
-                                    <td><%= user.username %></td>
-                                    <td><%= user.name %></td>
-                                    <td><%= user.lastname %></td>
-                                </tr>
-                            <% }) %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <form enctype="application/x-www-form-urlencoded" action="/posts/update/<%= post.id %>" method="post">
+                <input type="hidden" name="_method" value="PATCH">
+                
+                <label for="titulo"></label>
+                <input type="text" id="titulo" name="titulo" placeholder="Modifica el título..." required>
+                <label for="detalle"></label>
+                <input type="text" id="detalle" name="detalle" placeholder="Modifica el detalle..." required>
+                <label for="url_imagen"></label>
+                <input type="url" id="url_imagen" name="url_imagen" placeholder="Modifica la url de la imagen..." required>
+                <button type="submit" id="btn-update">Actualizar publicación</button>
+            </form>
         </div>
     </main>
     <footer class="footer bg-light px-3">

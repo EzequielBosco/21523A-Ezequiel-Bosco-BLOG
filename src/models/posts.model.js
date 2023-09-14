@@ -1,6 +1,11 @@
 const { DataTypes, Sequelize, sequelize } = require('../db')
 
 const PostSchema = sequelize.define('post', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
     titulo: {
         type: DataTypes.STRING(255),
         allowNull: false

@@ -2,13 +2,15 @@ const showData = (a, b) => {
     let register = ""
     a.forEach(post => {
         register += `
-        <div class="card-img-top d-flex border border-2 m-2">
+        <div class="card-img-top rounded d-flex border border-2 m-2 mb-3">
             <img class="card-img-top" src="${post.url_imagen}" alt="Imagen blog">
             <div class="card-body px-3 m-2">
                 <h3>${post.titulo}</h3>
                 <p class="card-text">${post.detalle}</p>
                 <p>${post.fecha_publicacion}</p>
             </div>
+            <a href="posts/update/<%= post.id %>" class="btn-update">Modificar publicación</a>
+            <a class="btn-delete" data-post-id="<%= post.id %>">Eliminar publicación</a>
         </div>
         `
     })
@@ -27,9 +29,9 @@ btnGet.addEventListener('click', getPosts)
 
 
 const btnCreate = document.getElementById('btn-create')
-btnCreate.addEventListener('click', createPosts)
+btnCreate.addEventListener('click', createPost)
 
-const createPosts = () => {
+const createPost = () => {
     fetch('/posts/create', {
         method: 'POST',
         headers: {
@@ -56,11 +58,66 @@ const createPosts = () => {
 }
 
 const btnUpdate = document.getElementById('btn-update')
-const updatePosts = () => {
-    fetch()
+btnUpdate.addEventListener('click', updatePost)
+
+const updatePost = () => {
+    const url = window.location.pathname
+    const parts = url.split('/')
+    const postId = parts[parts.length - 1]
+
+    const updatedData = {
+        titulo: document.getElementById('titulo').value,
+        detalle: document.getElementById('detalle').value,
+        url_imagen: document.getElementById('url_imagen').value,
+    }
+
+    fetch(`/posts/update/${postId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedData),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if (data.msg === 'Post updated successfully') {
+            console.log('Redirection is being executed')
+            window.location.href = '/posts'
+        } else {
+            console.log('Error updating the post')
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error)
+    })
 }
 
-const btnDelete = document.getElementById('btn-delete')
-const deletePosts = () => {
-    fetch()
+const btnDelete = document.querySelectorAll('.btn-delete');
+btnDelete.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        const postId = event.currentTarget.getAttribute('data-post-id')
+        console.log('Delete button clicked for post ID:', postId)
+        deletePost(postId)
+    })
+})
+
+const deletePost = (postId) => {
+    fetch(`/posts/${postId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if (data.msg === 'Post deleted successfully') {
+            console.log('Redirection is being executed')
+            window.location.href = '/posts'
+        } else {
+            console.log('Error to delete the post')
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error)
+    })
 }
