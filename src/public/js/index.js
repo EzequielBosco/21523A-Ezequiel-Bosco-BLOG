@@ -2,7 +2,7 @@ const showData = (a, b) => {
     let register = ""
     a.forEach(post => {
         register += `
-        <div class="card-img-top rounded d-flex border border-2 m-2 mb-3">
+        <div class="card-box-1 card-img-top d-flex border border-2 m-2 mb-3">
             <img class="card-img-top" src="${post.url_imagen}" alt="Imagen blog">
             <div class="card-body px-3 m-2">
                 <h3>${post.titulo}</h3>
@@ -22,6 +22,8 @@ const getPosts = async () => {
     const response = await fetch('/posts/get')
     const posts = await response.json()
     const divPosts = document.querySelector('#div-posts')
+
+    divPosts.innerHTML = ''
     showData(posts, divPosts)
 }
 const btnGet = document.getElementById('btn-get')

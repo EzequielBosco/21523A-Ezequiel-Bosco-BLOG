@@ -4,7 +4,10 @@ const router = Router()
 
 router.get('/', async (req, res) => {
     try {
-        const posts = await PostSchema.findAll()
+        const posts = await PostSchema.findAll({
+            limit: 3,
+            order: [['createdAt', 'DESC']]
+        })
         res.render('posts', { posts })
     } catch (error) {
         console.log(error)

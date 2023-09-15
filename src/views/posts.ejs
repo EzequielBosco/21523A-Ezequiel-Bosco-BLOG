@@ -2,43 +2,35 @@
 
 <main>
     <div class="container">
-        <h2>Publicaciones recientes</h2>
+        <h2 class="mt-3 color-5">Publicaciones recientes</h2>
         <hr>
         <section>
             <div class="row">
                 <div class="col">
-                    <table class="table table-stripped">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Titulo</th>
-                                <th>Detalle</th>
-                                <th>Fecha</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% posts.forEach(function(post) { %>
-                                <tr>
-                                    <td><%= post.id %></td>
-                                    <td><%= post.titulo %></td>
-                                    <td><%= post.detalle %></td>
-                                    <td><%= post.fecha_publicacion %></td>
-                                    <td><a href="posts/update/<%= post.id %>" class="btn-update">Modificar publicación</a></td>
-                                    <td><a class="btn btn-delete" data-post-id="<%= post.id %>">Eliminar publicación</a></a>
-                                </tr>
-                            <% }) %>
-                        </tbody>
-                    </table>
+                    <% posts.forEach(function(post) { %>
+                        <div class="card-box card-img-top d-flex border border-2 m-2 mb-3">
+                            <img class="card-img-top" src="<%= post.url_imagen %>" alt="Imagen blog">
+                            <div class="card-body px-3 m-2">
+                                <h3><%= post.titulo %></h3>
+                                <p class="card-text"><%= post.detalle %></p>
+                                <p><%= post.fecha_publicacion %></p>
+                            </div>
+                            <a href="posts/update/<%= post.id %>" class="btn-update">Modificar publicación</a>
+                            <a href="posts/detail/<%= post.id %>" class="btn">Ver más</a>
+                        </div>
+                    <% }) %>
                     <a href="posts/create" class="btn btn-black">Crear nueva publicación</a>
+                    <button type="button" class="btn btn-black m-2" id="btn-get">Ver todas las publicaciones</button>
+                    <hr>
                 </div>
             </div>
         </section>
-        <section>
-            <button type="button" class="btn btn-black" id="btn-get">Ver todas las publicaciones</button>
-            <div class="div-posts" id="div-posts"></div>
-        </section>
     </div>
 </main>
-
+</div>
+<section class="container-fluid mt-2 section-posts color-b-5">
+    <div class="container div-posts">
+        <div class="row" id="div-posts"></div>
+    </div>
+</section>
 <%-include("partials/footer") %>

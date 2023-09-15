@@ -1,5 +1,34 @@
 :root {
-    --color: rgb(236, 28, 36)
+    --color: rgb(236, 28, 36);
+    --color-1: rgb(20, 20, 20);
+    --color-2: rgb(29, 29, 29);
+    --color-3: rgb(74, 74, 74);
+    --color-4: rgb(170, 169, 158);
+    --color-5: rgb(248, 248, 248);
+}
+
+* {
+    font-family: 'Lora', serif;
+}
+
+img {
+    pointer-events: none
+}
+
+.logo {
+    height: 50px;
+}
+
+h1 {
+    font-weight: 600;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+h3 {
+    font-weight: 400;
 }
 
 .btn-black {
@@ -18,21 +47,61 @@ h1 {
     font-size: 50px;
 }
 
-.color {
+.color-b {
     background-color: var(--color)
 }
 
-.white {
-    color: white;
+.color-b-1 {
+    background-color: var(--color-1)
 }
 
-.black {
-    color: black;
+.color-b-2 {
+    background-color: var(--color-2)
+}
+
+.color-b-3 {
+    background-color: var(--color-3)
+}
+
+.color-b-4 {
+    background-color: var(--color-4)
+}
+
+.color-b-5 {
+    background-color: var(--color-5)
+}
+
+.color {
+    color: var(--color)
+}
+
+.color-1 {
+    color: var(--color-1)
+}
+
+.color-2 {
+    color: var(--color-2)
+}
+
+.color-3 {
+    color: var(--color-3)
+}
+
+.color-4 {
+    color: var(--color-4)
+}
+
+.color-5 {
+    color: var(--color-5)
 }
 
 nav h3 {
     margin: 0;
-    padding: 0
+    padding: 0;
+}
+
+nav {
+    border-bottom: 0.2px solid var(--color-4);
 }
 
 .card-img-top img {
@@ -41,5 +110,74 @@ nav h3 {
 }
 
 .card-img-top {
-    box-shadow: 2px 1px 6px 2px rgb(124, 124, 124);
+    margin: 10px 10px 10px 10px;
+}
+
+.div-posts a {
+    color: var(--color-1);
+}
+
+.div-posts a:hover {
+    color: var(--color);
+}
+
+.card-box {
+    background-color: var(--color-5);
+    box-shadow: -1px 1px 3px 0px var(--color-2);
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+
+.card-box:hover {
+    transform: translateX(3px);
+}
+
+.card-box-1 {
+    background-color: transparent;
+    box-shadow: -1px 1px 3px 0px var(--color-2);
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+
+.card-box-1:hover {
+    transform: translateX(3px);
+}
+
+footer img {
+    margin: 15px;
+    height: 160px;
+}
+
+.col {
+    margin: 0;
+    padding: 0;
+}
+
+.noticias {
+    width: 100%;
+}
+
+p {
+    font-size: 14px;
+}
+
+footer a {
+    color: var(--color-1);
+}
+
+footer a:hover {
+    color: var(--color);
+}
+
+a {
+    color: var(--color-5);
+}
+
+a:hover {
+    color: var(--color-2);
+}
+
+.section-posts {
+    margin: 0;
+    padding: 0;
 }
