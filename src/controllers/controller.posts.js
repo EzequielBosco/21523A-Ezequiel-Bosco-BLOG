@@ -14,6 +14,19 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/detail/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const post = await PostSchema.findOne({ where: {id: id}})
+        res.render('detail', { post })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            msg: "Error to get posts"
+        })
+    }
+})
+
 // router.get('/:id', async (req, res) => {
 //     try {
 //         const { id } = req.params
@@ -153,7 +166,7 @@ router.post('/update/:id', async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/detail/:id', async (req, res) => {
     const { id } = req.params
 
     try {

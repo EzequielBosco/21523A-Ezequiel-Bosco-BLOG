@@ -9,8 +9,8 @@ const showData = (a, b) => {
                 <p class="card-text">${post.detalle}</p>
                 <p>${post.fecha_publicacion}</p>
             </div>
-            <a href="posts/update/<%= post.id %>" class="btn-update">Modificar publicación</a>
-            <a class="btn-delete" data-post-id="<%= post.id %>">Eliminar publicación</a>
+            <a href="posts/update/${post.id}" class="btn-update">Modificar publicación</a>
+            <a href="posts/detail/${post.id}" class="btn">Ver más</a>
         </div>
         `
     })
@@ -92,17 +92,18 @@ const updatePost = () => {
     })
 }
 
-const btnDelete = document.querySelectorAll('.btn-delete');
-btnDelete.forEach((btn) => {
-    btn.addEventListener('click', (event) => {
-        const postId = event.currentTarget.getAttribute('data-post-id')
-        console.log('Delete button clicked for post ID:', postId)
-        deletePost(postId)
-    })
-})
 
-const deletePost = (postId) => {
-    fetch(`/posts/${postId}`, {
+const btnDelete = document.getElementById("btn-delete")
+btnDelete.addEventListener('click', deletePost)
+
+const deletePost = () => {
+    console.log("hola")
+    const url = window.location.pathname
+    const parts = url.split('/')
+    const postId = parts[parts.length - 1]
+    const deleteUrl = `/posts/detail/${postId}`
+
+    fetch(deleteUrl, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

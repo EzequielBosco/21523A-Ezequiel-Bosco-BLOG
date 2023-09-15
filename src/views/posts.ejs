@@ -1,76 +1,44 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
-<body class="container-fluid">
-    <header>
-        <nav class="navbar navbar-light bg-light justify-content-between px-3 align-items-center">
-            <a class="navbar-brand">Blog TodoRojoCAI</a>
-            <h3>INDEPENDIENTE</h3>
-            <form class="form-inline d-flex g-2">
-                <input class="form-control mr-sm-2 mx-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-black my-2 my-sm-0" type="submit">Buscar</button>
-            </form>
-        </nav>
-    </header>
-    <main>
-        <div class="container">
-            <h2>Publicaciones recientes</h2>
-            <hr>
-            <section>
-                <div class="row">
-                    <div class="col">
-                        <table class="table table-stripped">
-                            <thead>
+<%-include("partials/header") %>
+
+<main>
+    <div class="container">
+        <h2>Publicaciones recientes</h2>
+        <hr>
+        <section>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Titulo</th>
+                                <th>Detalle</th>
+                                <th>Fecha</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% posts.forEach(function(post) { %>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Titulo</th>
-                                    <th>Detalle</th>
-                                    <th>Fecha</th>
-                                    <th>Opciones</th>
+                                    <td><%= post.id %></td>
+                                    <td><%= post.titulo %></td>
+                                    <td><%= post.detalle %></td>
+                                    <td><%= post.fecha_publicacion %></td>
+                                    <td><a href="posts/update/<%= post.id %>" class="btn-update">Modificar publicación</a></td>
+                                    <td><a class="btn btn-delete" data-post-id="<%= post.id %>">Eliminar publicación</a></a>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <% posts.forEach(function(post) { %>
-                                    <tr>
-                                        <td><%= post.id %></td>
-                                        <td><%= post.titulo %></td>
-                                        <td><%= post.detalle %></td>
-                                        <td><%= post.fecha_publicacion %></td>
-                                        <td><a href="posts/update/<%= post.id %>" class="btn-update">Modificar publicación</a></td>
-                                        <td><button class="btn btn-delete" data-post-id="<%= post.id %>">Eliminar publicación</a></button>
-                                    </tr>
-                                <% }) %>
-                            </tbody>
-                        </table>
-                        <a href="posts/create" class="btn btn-black">Crear nueva publicación</a>
-                    </div>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                    <a href="posts/create" class="btn btn-black">Crear nueva publicación</a>
                 </div>
-            </section>
-            <section>
-                <button type="button" class="btn btn-black" id="btn-get">Ver todas las publicaciones</button>
-                <div class="div-posts" id="div-posts"></div>
-            </section>
-        </div>
-    </main>
-    <footer class="footer bg-light px-3">
-        <div class="row text-center">
-            <div class="col">
-                <div>1</div>
-                <div>1</div>
             </div>
-            <div class="col">
-                <div>2</div>
-                <div>2</div>
-            </div>
-        </div>
-    </footer>
-    <script src="/js/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-</body>
-</html>
+        </section>
+        <section>
+            <button type="button" class="btn btn-black" id="btn-get">Ver todas las publicaciones</button>
+            <div class="div-posts" id="div-posts"></div>
+        </section>
+    </div>
+</main>
+
+<%-include("partials/footer") %>
