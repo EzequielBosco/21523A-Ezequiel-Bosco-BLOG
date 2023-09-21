@@ -15,38 +15,6 @@ img {
     pointer-events: none
 }
 
-.logo {
-    height: 50px;
-}
-
-h1 {
-    font-weight: 600;
-}
-
-h2 {
-    font-weight: 500;
-}
-
-h3 {
-    font-weight: 400;
-}
-
-.btn-black {
-    background-color: black;
-    color: white;
-    transition: 0.2s ease;
-}
-
-.btn-black:hover {
-    background-color: rgb(17, 17, 17);
-    color: white;
-    transform: scale(0.95);
-}
-
-h1 {
-    font-size: 50px;
-}
-
 .color-b {
     background-color: var(--color)
 }
@@ -95,6 +63,55 @@ h1 {
     color: var(--color-5)
 }
 
+/* NAV */
+
+.logo {
+    height: 56px;
+}
+
+.sponsors {
+    height: 50px;
+}
+
+i {
+    margin: 0 15px 0 15px;
+}
+
+.stadium {
+    background-image: url('../img/estadio.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h1 {
+    font-weight: 600;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+.btn-black {
+    background-color: black;
+    color: white;
+    transition: 0.2s ease;
+}
+
+.btn-black:hover {
+    background-color: rgb(17, 17, 17);
+    color: white;
+    transform: scale(0.95);
+}
+
+h1 {
+    font-size: 50px;
+}
+
 nav h3 {
     margin: 0;
     padding: 0;
@@ -104,8 +121,10 @@ nav {
     border-bottom: 0.2px solid var(--color-4);
 }
 
+/* POSTS */
+
 .card-img-top img {
-    width: 300px;
+    width: 600px;
     border-radius: 5px;
 }
 
@@ -129,7 +148,13 @@ nav {
 }
 
 .card-box:hover {
-    transform: translateX(3px);
+    transform: translateX(3px) scale(0.995);
+}
+
+/* CARD - 1 */
+.card-img-top-1 img {
+    width: 300px;
+    border-radius: 5px;
 }
 
 .card-box-1 {
@@ -140,7 +165,7 @@ nav {
 }
 
 .card-box-1:hover {
-    transform: translateX(3px);
+    transform: translateY(3px);
 }
 
 footer img {
@@ -161,6 +186,13 @@ p {
     font-size: 14px;
 }
 
+.fondo-posts {
+    background-image: url('../img/fondo-rojo.jpg');
+    background-size: auto;
+    background-repeat: repeat;
+}
+
+ /* FOOTER */
 footer a {
     color: var(--color-1);
 }
