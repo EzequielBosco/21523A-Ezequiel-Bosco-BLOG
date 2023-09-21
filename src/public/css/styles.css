@@ -11,6 +11,11 @@
     font-family: 'Lora', serif;
 }
 
+body {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+}
+
 img {
     pointer-events: none
 }
@@ -63,25 +68,38 @@ img {
     color: var(--color-5)
 }
 
-/* NAV */
-
-.logo {
-    height: 56px;
+.btn-black {
+    background-color: black;
+    color: white;
+    transition: 0.2s ease;
+    box-shadow: 1px 1px 3px 0.5px rgba(28, 28, 28, 0.586);
 }
 
-.sponsors {
-    height: 50px;
+.btn-black:hover {
+    background-color: rgb(17, 17, 17);
+    color: white;
+    transform: scale(0.95);
 }
 
-i {
-    margin: 0 15px 0 15px;
+.btn-black:active {
+    background-color: rgb(17, 17, 17);
+    color: white;
 }
 
-.stadium {
-    background-image: url('../img/estadio.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.btn-red {
+    background-color: var(--color-1);
+    color: white !important;
+    transition: 0.2s ease;
+    box-shadow: 1px 1px 3px 0.5px rgba(28, 28, 28, 0.586);
+}
+
+.btn-red:hover {
+    background-color: var(--color);
+    transform: scale(0.95);
+}
+
+.btn-red:active {
+    background-color: var(--color) !important;
 }
 
 h1 {
@@ -96,20 +114,30 @@ h3 {
     font-weight: 400;
 }
 
-.btn-black {
-    background-color: black;
-    color: white;
-    transition: 0.2s ease;
-}
-
-.btn-black:hover {
-    background-color: rgb(17, 17, 17);
-    color: white;
-    transform: scale(0.95);
-}
-
 h1 {
     font-size: 50px;
+}
+
+/* NAV */
+
+.logo {
+    height: 56px;
+}
+
+.sponsors {
+    height: 50px;
+}
+
+i {
+    margin: 0 15px 0 15px;
+    transition: 0.2s ease-in-out;
+}
+
+.stadium {
+    background-image: url('../img/estadio.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 nav h3 {
@@ -123,21 +151,75 @@ nav {
 
 /* POSTS */
 
-.card-img-top img {
-    width: 600px;
-    border-radius: 5px;
-}
-
-.card-img-top {
-    margin: 10px 10px 10px 10px;
-}
-
 .div-posts a {
     color: var(--color-1);
 }
 
 .div-posts a:hover {
     color: var(--color);
+}
+
+.col {
+    margin: 0;
+    padding: 0;
+}
+
+.noticias {
+    width: 100%;
+    box-shadow: 1px 2px 4px 1px var(--color-2);
+}
+
+.noticias img {
+    width: 100%;
+}
+
+.fondo-posts {
+    background-image: url('../img/fondo-rojo.jpg');
+    background-size: auto;
+    background-repeat: repeat;
+}
+
+p {
+    font-size: 14px;
+}
+
+.copas {
+    max-width: 100%;
+    height: auto;
+}
+
+.redes {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.blog p {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 767px ) {
+    .redes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+}
+
+/* CARD */
+.card-img-top img {
+    max-width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.card-img-top {
+    margin: 10px 10px 10px 10px;
 }
 
 .card-box {
@@ -148,24 +230,44 @@ nav {
 }
 
 .card-box:hover {
-    transform: translateX(3px) scale(0.995);
+    transform: scale(0.995);
 }
 
 /* CARD - 1 */
 .card-img-top-1 img {
     width: 300px;
+    height: 250px;
+    object-fit: cover;
     border-radius: 5px;
 }
 
 .card-box-1 {
-    background-color: transparent;
+    background-color: var(--color-5);
     box-shadow: -1px 1px 3px 0px var(--color-2);
     border-radius: 10px;
     transition: 0.2s ease;
+    opacity: 0.98;
 }
 
 .card-box-1:hover {
     transform: translateY(3px);
+}
+
+/* DETAIL */
+.card-img-top-detail img {
+    width: 600px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* FORM */
+.form {
+    margin: 15px;
+    width: 85%;
+}
+
+form {
+    width: 35%;
 }
 
 footer img {
@@ -173,26 +275,12 @@ footer img {
     height: 160px;
 }
 
-.col {
-    margin: 0;
-    padding: 0;
+form label {
+    font-size: 22px;
 }
 
-.noticias {
-    width: 100%;
-}
+/* FOOTER */
 
-p {
-    font-size: 14px;
-}
-
-.fondo-posts {
-    background-image: url('../img/fondo-rojo.jpg');
-    background-size: auto;
-    background-repeat: repeat;
-}
-
- /* FOOTER */
 footer a {
     color: var(--color-1);
 }

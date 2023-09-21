@@ -2,16 +2,16 @@ const showData = (a, b) => {
     let register = ""
     a.forEach(post => {
         register += `
-        <div class="col">
+        <div class="col mt-2">
             <div class="card-box-1 card-img-top-1 d-flex border border-2 m-2 mb-3">
                 <img class="card-img-top" src="${post.url_imagen}" alt="Imagen blog">
-                <div class="card-body px-3 m-2">
+                <div class="card-body px-3 m-2 pb-1 pt-1 d-flex flex-column justify-content-between">
                     <h3>${post.titulo}</h3>
+                    <p>Autor: <strong>${post.autor}</strong></p>
                     <p class="card-text">${post.detalle}</p>
-                    <p>${post.fecha_publicacion}</p>
+                    <p>Fecha: ${post.fecha_publicacion}</p>
+                    <a href="posts/detail/${post.id}" class="btn btn-red">Ver más</a>
                 </div>
-                <a href="posts/update/${post.id}" class="btn-update">Modificar publicación</a>
-                <a href="posts/detail/${post.id}" class="btn">Ver más</a>
             </div>
         </div>
         `
@@ -26,32 +26,6 @@ const getPosts = async () => {
     const divPosts = document.querySelector('#div-posts')
 
     divPosts.innerHTML = ''
-    // const columns = 3
-    // const postsColumn = Math.ceil(posts.length / columns)
-    // for (let i = 0; i < columns; i++) {
-    //     const column = document.createElement('div')
-    //     column.classList.add('col')
-
-    //     for (let j = i * postsColumn; j < (i + 1) * postsColumn && j < posts.length; j++) {
-    //         const post = posts[j]
-    //         const postElement = document.createElement('div')
-    //         postElement.innerHTML = `
-    //             <div class="card-box-1 card-img-top d-flex border border-2 m-2 mb-3">
-    //                 <img class="card-img-top" src="${post.url_imagen}" alt="Imagen blog">
-    //                 <div class="card-body px-3 m-2">
-    //                     <h3>${post.titulo}</h3>
-    //                     <p class="card-text">${post.detalle}</p>
-    //                     <p>${post.fecha_publicacion}</p>
-    //                 </div>
-    //                 <a href="posts/update/${post.id}" class="btn-update">Modificar publicación</a>
-    //                 <a href="posts/detail/${post.id}" class="btn">Ver más</a>
-    //             </div>
-    //         `
-    //         column.appendChild(postElement)
-    //     }
-
-    //     divPosts.appendChild(column)
-    // }
     showData(posts, divPosts)
 }
 const btnGet = document.getElementById('btn-get')
@@ -61,13 +35,14 @@ btnGet.addEventListener('click', getPosts)
 const btnCreate = document.getElementById('btn-create')
 btnCreate.addEventListener('click', createPost)
 
-const createPost = () => {
+const createPost = async () => {
     fetch('/posts/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            autor: document.getElementById('autor').value,
             titulo: document.getElementById('titulo').value,
             detalle: document.getElementById('detalle').value,
             url_imagen: document.getElementById('url_imagen').value,
@@ -75,11 +50,9 @@ const createPost = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-        if (data.msg === 'Post created successfully') {
-            console.log('Redirection is being executed')
-            window.location.href = '/posts'
-        } else {
-            console.log("Error to create a post")
+        console.log(data)
+        if (data.message === "Post created successfully" && data.redirect) {
+            window.location.href = data.redirect
         }
     })
     .catch((error) => {
@@ -90,7 +63,7 @@ const createPost = () => {
 const btnUpdate = document.getElementById('btn-update')
 btnUpdate.addEventListener('click', updatePost)
 
-const updatePost = () => {
+const updatePost = async () => {
     const url = window.location.pathname
     const parts = url.split('/')
     const postId = parts[parts.length - 1]
@@ -110,11 +83,9 @@ const updatePost = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-        if (data.msg === 'Post updated successfully') {
-            console.log('Redirection is being executed')
-            window.location.href = '/posts'
-        } else {
-            console.log('Error updating the post')
+        console.log(data)
+        if (data.message === "Post updated successfully" && data.redirect) {
+            window.location.href = data.redirect
         }
     })
     .catch((error) => {
@@ -122,12 +93,10 @@ const updatePost = () => {
     })
 }
 
-
 const btnDelete = document.getElementById("btn-delete")
 btnDelete.addEventListener('click', deletePost)
 
-const deletePost = () => {
-    console.log("hola")
+function deletePost() {
     const url = window.location.pathname
     const parts = url.split('/')
     const postId = parts[parts.length - 1]
@@ -141,11 +110,9 @@ const deletePost = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-        if (data.msg === 'Post deleted successfully') {
-            console.log('Redirection is being executed')
-            window.location.href = '/posts'
-        } else {
-            console.log('Error to delete the post')
+        console.log(data)
+        if (data.message === 'Deleted successfully' && data.redirect) {
+            window.location.href = data.redirect
         }
     })
     .catch((error) => {

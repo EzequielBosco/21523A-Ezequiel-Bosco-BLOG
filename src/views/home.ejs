@@ -7,12 +7,15 @@
 </main>
 <hr>
 <section>
-    <div class="d-flex m-2">
+    <div class="d-flex align-items-center justify-content-between m-2 pb-2">
         <h2 class="color-5 m-0">NOTICIAS</h2>
+        <form class="form-inline d-flex g-2" action="/posts">
+            <input class="form-control mr-sm-2 mx-2" type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-black my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
     </div>
     <div class="container d-flex justify-content-center">
-        <img class="noticias" src="/img/fondo.jpg">
-        <!-- <img class="noticias" src="/img/noticias-1.jpg"> -->
+        <a class="noticias" href="/posts"><img src="/img/fondo.jpg" alt="Noticias Independiente"></a>
     </div>
     <a class="btn btn-black m-2 mt-3" type="button" href="/posts">Ver Blog</a>
 </section>
@@ -21,7 +24,7 @@
 <section class="color-b-5 stadium p-4">
     <div class="container mt-5 mb-2 d-flex flex-column align-items-center justify-content-center gap-5">
         <h2 class="text-center color-5">Rey de Copas</h2>
-        <img src="/img/copas.png">
+        <img class="copas" src="/img/copas.png" alt="Copas">
     </div>
 </section>
 <%-include("partials/footer") %>

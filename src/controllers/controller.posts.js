@@ -1,13 +1,33 @@
 const { Router } = require('express')
+const { Op } = require('sequelize')
 const PostSchema = require('../models/posts.model.js')
 const router = Router()
 
 router.get('/', async (req, res) => {
     try {
-        const posts = await PostSchema.findAll({
-            limit: 1,
-            order: [['createdAt', 'DESC']]
-        })
+
+        const searchTerm = req.query.query
+        let posts
+
+        if (searchTerm) {
+            // Si hay busqueda
+            posts = await PostSchema.findAll({
+                where: {
+                    titulo: {
+                        [Op.like]: `%${searchTerm}%`
+                    }
+                },
+                limit: 1,
+                order: [['createdAt', 'DESC']]
+            })
+        } else {
+            // Normal
+            posts = await PostSchema.findAll({
+                limit: 2,
+                order: [['createdAt', 'DESC']]
+            })
+        }
+
         res.render('posts', { posts })
     } catch (error) {
         console.log(error)
@@ -30,21 +50,6 @@ router.get('/detail/:id', async (req, res) => {
     }
 })
 
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const { id } = req.params
-//         const post = await PostSchema.findOne({ where: {id: id}})
-         
-//         res.render('posts', { post })
-//     } catch (error) {
-//         console.log(error)
-//         return res.status(500).json({
-//             msg: "Error to get posts"
-//         })
-//     }
-// })
-
-// get
 router.get('/get', async (req, res) => {
     try {
         const posts = await PostSchema.findAll()
@@ -68,13 +73,15 @@ router.get('/create', async (req, res) => {
 })
 
 router.post('/create', async (req, res) => {
-    const { titulo, detalle, url_imagen, fecha_publicacion } = req.body
+    const { autor, titulo, detalle, url_imagen, fecha_publicacion } = req.body
 
     try {
-        const newPost = { titulo, detalle, url_imagen, fecha_publicacion }
+        const newPost = { autor, titulo, detalle, url_imagen, fecha_publicacion }
         await PostSchema.create(newPost)
 
-        res.send({ msg: 'Post created successfully', newPost })
+        const redirectUrl = '/posts'
+    
+        res.status(200).json({ msg: "Post created successfully", newPost, redirect: redirectUrl })
     } catch (error) {
         console.log(error)
         return res.status(500).json({
@@ -82,35 +89,6 @@ router.post('/create', async (req, res) => {
         })
     }
 })
-
-// router.post('/create', async (req, res) => {
-//     const { titulo, detalle, url_imagen, fecha_publicacion } = req.body
-
-//     try {
-//         const newPost = { titulo, detalle, url_imagen, fecha_publicacion }
-//         await PostSchema.create(newPost)
-
-//         res.send({ msg: "Post created successful", newPost })
-//     } catch (error) {
-//         console.log(error)
-//         return res.status(500).json({
-//             msg: "Error creating post"
-//         })
-//     }
-// })
-
-// router.get('/get', async (req, res) => {
-//     try {
-//         const posts = await PostSchema.findAll()
-    
-//         res.send({ msg: "Posts:", posts })
-//     } catch (error) {
-//         console.log(error)
-//         return res.status(500).json({
-//             msg: "Error to get posts"
-//         })
-//     }
-// })
 
 router.get('/update/:id', async (req, res) => {
     try {
@@ -133,10 +111,10 @@ router.post('/update/:id', async (req, res) => {
     const { id } = req.params
 
     try {
-        const { titulo, detalle, url_imagen, fecha_publicacion } = req.body
+        const { autor, titulo, detalle, url_imagen, fecha_publicacion } = req.body
 
-        if(!titulo && !detalle && !url_imagen && !fecha_publicacion) {
-            res.send("Debes ingresar por lo menos un campo para actualizar")
+        if(!autor && !titulo && !detalle && !url_imagen && !fecha_publicacion) {
+            return res.status(404).json({ msg: "Debes ingresar por lo menos un campo para actualizar" })
         }
 
         const post = await PostSchema.findOne({ where: {id: id}})
@@ -145,6 +123,9 @@ router.post('/update/:id', async (req, res) => {
             return res.status(404).json({ msg: "El post no fue encontrado" })
         }
 
+        if (autor) {
+            post.autor = autor
+        }
         if (titulo) {
             post.titulo = titulo
         }
@@ -159,8 +140,10 @@ router.post('/update/:id', async (req, res) => {
         }
 
         await post.save()
+
+        const redirectUrl = '/posts'
     
-        res.json({ msg: "Post updated successfully" })
+        res.status(200).json({ msg: "Post updated successfully", redirect: redirectUrl })
     } catch (error) {
         console.log(error)
         return res.status(500).json({
@@ -180,13 +163,18 @@ router.delete('/detail/:id', async (req, res) => {
             }
         })
     
-        return res.json({ msg: "Post deleted successfully" })
+        return res.json({ msg: "Post deleted successfully", redirect: '/posts' })
     } catch (error) {
         console.log(error)
         return res.status(500).json({
             msg: "Error to delete post"
         })
     }
+})
+
+router.get('/', (req, res) => {
+    const searchTerm = req.query.query
+    res.send(`Búsqueda realizada con el término: ${searchTerm}`)
 })
 
 module.exports = router

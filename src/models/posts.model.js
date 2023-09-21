@@ -6,6 +6,10 @@ const PostSchema = sequelize.define('post', {
         primaryKey: true,
         autoIncrement: true
     },
+    autor: {
+        type: DataTypes.STRING(255),
+        allowNull: false
+    },
     titulo: {
         type: DataTypes.STRING(255),
         allowNull: false

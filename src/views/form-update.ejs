@@ -1,17 +1,26 @@
 <%-include("partials/header") %>
 
-<main class="color">
+<main>
     <div class="container">
-        <form enctype="application/x-www-form-urlencoded" action="/posts/update/<%= post.id %>" method="post">
+        <h1 class="color-5 mt-3">Modifica una publicación</h1>
+        <hr>
+        <form enctype="application/x-www-form-urlencoded" action="/posts/update/<%= post.id %>" method="post" class="form color-1">
             <input type="hidden" name="_method" value="PATCH">
             
-            <label for="titulo"></label>
-            <input type="text" id="titulo" name="titulo" placeholder="Modifica el título..." required>
-            <label for="detalle"></label>
-            <input type="text" id="detalle" name="detalle" placeholder="Modifica el detalle..." required>
-            <label for="url_imagen"></label>
-            <input type="url" id="url_imagen" name="url_imagen" placeholder="Modifica la url de la imagen..." required>
-            <button type="submit" id="btn-update">Actualizar publicación</button>
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Modifica el título...">
+            </div>
+            <div class="mb-3">
+                <label for="detalle" class="form-label">Detalle</label>
+                <input type="text" class="form-control" id="detalle" name="detalle" placeholder="Modifica el detalle...">
+            </div>
+            <div class="mb-3">
+                <label for="url_imagen" class="form-label">Url de la imagen</label>
+                <input type="url" class="form-control" id="url_imagen" name="url_imagen" placeholder="Modifica la url de la imagen...">
+            </div>
+
+            <button type="submit" id="btn-update" class="btn btn-black">Actualizar publicación</button>
         </form>
     </div>
 </main>
