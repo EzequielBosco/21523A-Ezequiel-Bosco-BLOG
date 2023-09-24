@@ -2,8 +2,8 @@ const showData = (a, b) => {
     let register = ""
     a.forEach(post => {
         register += `
-        <div class="col mt-2">
-            <div class="card-box-1 card-img-top-1 d-flex border border-2 m-2 mb-3">
+        <div class="col mt-2 d-flex justify-content-center">
+            <div class="card-box card-box-2 card-img-top d-flex border border-2 m-2 mb-3">
                 <img class="card-img-top" src="${post.url_imagen}" alt="Imagen blog">
                 <div class="card-body px-3 m-2 pb-1 pt-1 d-flex flex-column justify-content-between">
                     <h3>${post.titulo}</h3>

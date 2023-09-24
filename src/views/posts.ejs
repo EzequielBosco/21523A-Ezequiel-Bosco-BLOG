@@ -2,16 +2,16 @@
 
 <main>
     <div class="container">
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between flex-wrap">
             <h1 class="mt-3 color-5">Últimas publicaciónes</h1>
-            <form class="form-inline d-flex g-2" action="/posts" method="GET">
-                <input class="form-control mr-sm-2 mx-2" type="search" name="query" placeholder="Buscar" aria-label="Search">
+            <form class="form-inline d-flex g-2 align-items-center col-auto col-md-auto" action="/posts" method="GET">
+                <input class="form-control mr-sm-2 mx-2" type="search" name="query" placeholder="Buscar..." aria-label="Search">
                 <button class="btn btn-black my-2 my-sm-0" type="submit">Buscar</button>
             </form>
         </div>
         <hr>
-        <section>
-            <div class="row gap-3">
+        <section class="d-flex gap-3 flex-wrap">
+            <div class="row gap-3 main-posts">
                 <% posts.forEach(function(post) { %>
                     <div class="col">
                         <div class="card-box card-img-top d-flex border border-2 m-2 mb-3">
@@ -30,15 +30,29 @@
                     <a href="posts/create" class="btn btn-black">Crear nueva publicación</a>
                     <button type="button" class="btn btn-black" id="btn-get">Ver todas las publicaciones</button>
                 </div>
-                <hr>
             </div>
+            <aside class="aside gap-1 text-center">
+                <a href="https://clubaindependiente.com.ar/institucion/centroeducativo/noticias/1693577511_estudia-en-independiente">
+                    <div>
+                        <img src="/img/aside.jpg" alt="Estudiá en independiente">
+                        <p class="color-1">¡ESTUDIÁ EN INDEPENDIENTE!</p>
+                    </div>
+                </a>
+                <a href="https://clubaindependiente.com.ar/institucion/noticias/1695436694_independiente-se-postulo-como-sede-para-el-2030">
+                    <div>
+                        <img src="/img/sede.jpg" alt="Sede mundial 2030">
+                        <p class="color-1">SEDE PARA EL MUNDIAL 2030</p>
+                    </div>
+                </a>
+            </aside>
         </section>
     </div>
+    <hr>
 </main>
 </div>
 <section class="container-fluid fondo-posts section-posts color-b-5">
     <div class="container div-posts">
-        <div class="row gap-3" id="div-posts"></div>
+        <div class="row gap-3 flex-wrap" id="div-posts"></div>
     </div>
 </section>
 <%-include("partials/footer") %>

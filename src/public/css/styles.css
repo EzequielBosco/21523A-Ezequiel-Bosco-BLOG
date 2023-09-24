@@ -150,6 +150,30 @@ nav {
 }
 
 /* POSTS */
+.main-posts {
+    width: 72%;
+}
+
+.aside {
+    width: 28%;
+    width: 300px;
+    background-color: var(--color-5);
+    box-shadow: -1px 1px 3px 0px var(--color-2);
+    border-radius: 10px;
+    margin: 6px;
+    transition: 0.2s ease;
+    overflow: hidden;
+}
+
+.aside img {
+    border-radius: 5px;
+    margin: 10px;
+    width: 280px;
+}
+
+.aside:hover {
+    transform: scale(0.995);
+}
 
 .div-posts a {
     color: var(--color-1);
@@ -210,54 +234,69 @@ p {
     }
 }
 
+@media screen and (max-width: 1198px ) {
+    .aside {
+        display: none;
+    }
+    .main-posts {
+        width: 100%;
+    }
+}
+
 /* CARD */
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
 .card-img-top img {
-    max-width: 400px;
+    max-width: 300px;
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
 }
 
 .card-img-top {
-    margin: 10px 10px 10px 10px;
+    margin: 10px;
 }
 
 .card-box {
     background-color: var(--color-5);
     box-shadow: -1px 1px 3px 0px var(--color-2);
+    width: auto;
     border-radius: 10px;
     transition: 0.2s ease;
+    overflow: hidden;
 }
 
 .card-box:hover {
     transform: scale(0.995);
 }
 
-/* CARD - 1 */
-.card-img-top-1 img {
-    width: 300px;
+.card-box-2 {
+    width: 540px;
+}
+
+.card-box-2 img {
+    width: 250px;
     height: 250px;
-    object-fit: cover;
-    border-radius: 5px;
 }
 
-.card-box-1 {
-    background-color: var(--color-5);
-    box-shadow: -1px 1px 3px 0px var(--color-2);
-    border-radius: 10px;
-    transition: 0.2s ease;
-    opacity: 0.98;
-}
-
-.card-box-1:hover {
+.card-box-2:hover {
     transform: translateY(3px);
 }
 
 /* DETAIL */
+.card-img-top-detail {
+    width: auto;
+}
+
 .card-img-top-detail img {
-    width: 600px;
+    max-width: 45%;
+    height: auto;
     object-fit: cover;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 /* FORM */
@@ -277,6 +316,11 @@ footer img {
 
 form label {
     font-size: 22px;
+}
+
+form input {
+    min-width: 100px;
+    height: 38px;
 }
 
 /* FOOTER */

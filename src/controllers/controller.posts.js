@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
         } else {
             // Normal
             posts = await PostSchema.findAll({
-                limit: 2,
+                limit: 1,
                 order: [['createdAt', 'DESC']]
             })
         }
