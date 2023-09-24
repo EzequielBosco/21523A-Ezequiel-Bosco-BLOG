@@ -7,6 +7,7 @@ module.exports = {
         pass: process.env.DB_PASS,
         host: process.env.DB_HOST,
         name: process.env.DB_NAME,
-        dialect: process.env.DB_DIALECT,
+        // dialect: process.env.DB_DIALECT,
+        dialect: 'postgres',
     }
 }
