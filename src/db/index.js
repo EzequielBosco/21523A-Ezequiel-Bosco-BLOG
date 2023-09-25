@@ -15,8 +15,11 @@ const connectBD = async () => {
     try {
         await sequelize.authenticate()
         console.log('Connection to BD successful')
+
+        await sequelize.sync();
+        console.log('Database synchronized successfully')
     } catch (error) {
-        console.log('Error', + error)
+        console.log('Error', error)
     }
 }
 
