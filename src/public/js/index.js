@@ -8,7 +8,6 @@ const showData = (a, b) => {
                 <div class="card-body px-3 m-2 pb-1 pt-1 d-flex flex-column justify-content-between">
                     <h3>${post.titulo}</h3>
                     <p>Autor: <strong>${post.autor}</strong></p>
-                    <p class="card-text">${post.detalle}</p>
                     <p>Fecha: ${post.fecha_publicacion}</p>
                     <a href="posts/detail/${post.id}" class="btn btn-red">Ver más</a>
                 </div>
