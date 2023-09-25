@@ -1,7 +1,12 @@
 const { Sequelize, DataTypes } = require('sequelize')
 const { db } = require('../config/index.config')
 
-const sequelize = new Sequelize(db.name, db.user, '', {
+// const sequelize = new Sequelize(db.name, db.user, '', {
+//     host: db.host,
+//     dialect: db.dialect
+// })
+
+const sequelize = new Sequelize(db.name, db.user, db.pass, {
     host: db.host,
     dialect: db.dialect
 })
